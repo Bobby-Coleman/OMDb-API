@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import getMovies from '../services/omdb-api'
+import Movies from './movies'
 
 class OmdbSearch extends Component {
 
@@ -16,9 +18,9 @@ class OmdbSearch extends Component {
 
     searchMovie = async () => {
         const keyword = this.state.keyword;
-        const movies = await getMovies(keyword)
+        const search = await getMovies(keyword)
         this.setState({
-            movies: movies
+            movies: search
         })
     }
 
@@ -39,11 +41,7 @@ class OmdbSearch extends Component {
                     Search
                 </button>
                 <div className="movies-list">
-                    {
-                        this.state.movies.map( (movie, i) =>
-                        <h3 key={i}>{movie.Title}</h3>
-                        )
-                    }
+                  < Movies movies={this.state.movies} />
                 </div>
             </div>
            </>
