@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
+import getMovies from '../services/omdb-api'
 
 class OmdbSearch extends Component {
 
     state= {
-        keyword: ''
+        keyword: '',
+        movies: [],
     }
 
     keywordChanged = event => {
-        console.log(event.target.value)
+        this.setState( {
+            keyword: event.target.value
+        })
+    }
+
+    searchMovie = async () => {
+        const keyword = this.state.keyword;
+        const movies = await getMovies(keyword)
+        this.setState({
+            movies: movies
+        })
     }
 
 
@@ -22,7 +34,17 @@ class OmdbSearch extends Component {
                 onChange={this.keywordChanged}
                 placeholder="Enter a Movie Title"
                 />
-                <button>Search</button>
+                <button 
+                onClick={this.searchMovie}>
+                    Search
+                </button>
+                <div className="movies-list">
+                    {
+                        this.state.movies.map( (movie, i) =>
+                        <h3 key={i}>{movie.Title}</h3>
+                        )
+                    }
+                </div>
             </div>
            </>
         )
