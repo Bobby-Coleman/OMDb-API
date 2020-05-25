@@ -26,6 +26,16 @@ class OmdbSearch extends Component {
 
 
     render() {
+
+        const moviesState = this.state.movies;
+        let movies;
+        if (moviesState) {
+           movies = < Movies movies={this.state.movies} /> 
+        } else {
+           movies = <h2>No Movies Match That Search</h2>
+        }
+
+
         return (
            <> 
             <h1>Ombd Search</h1>
@@ -41,7 +51,7 @@ class OmdbSearch extends Component {
                     Search
                 </button>
                 <div className="movies-list">
-                  < Movies movies={this.state.movies} />
+                    {movies}
                 </div>
             </div>
            </>
