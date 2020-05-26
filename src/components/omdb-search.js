@@ -38,7 +38,7 @@ class OmdbSearch extends Component {
 
         return (
            <> 
-            <h1>Ombd Search</h1>
+            <h1>Omdb Search</h1>
             <div>
                 <input 
                 value={this.state.keyword} 
