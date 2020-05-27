@@ -1,4 +1,4 @@
-const omdb_key = '37499bcf'
+const omdb_key = process.env.OMDB_KEY
 const OMDB_API_ENDPOINT = `http://www.omdbapi.com/?apikey=${omdb_key}&`
 
 const getMovieTitle = (title) => {

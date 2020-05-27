@@ -16,7 +16,7 @@ class Movies extends Component {
              <div key={i} className="movie-card">
                  <li>{movie.Title}</li>
                  <li>{movie.Year}</li>
-                 <Actors title={movie.Title} />
+                 {/* <Actors title={movie.Title} /> */}
              </div> 
              )
             }
